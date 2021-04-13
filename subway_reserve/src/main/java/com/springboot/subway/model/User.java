@@ -1,15 +1,28 @@
 package com.springboot.subway.model;
 
+import lombok.experimental.Accessors;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.Id;
 import java.util.Set;
 
+@Accessors(chain = true)
+@Document(collection = "user")
 public class User {
+    @Id
     private String id;
+
+    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
     private String email;
     private String password;
     private String first_Name;
     private String last_Name;
-    private String mobileNumber;
+    private String mobile_Number;
 
+    @DBRef
     private Set<Role> roles;
 
     public User() {
@@ -20,14 +33,14 @@ public class User {
                 String password,
                 String first_Name,
                 String last_Name,
-                String mobileNumber,
+                String mobile_Number,
                 Set<Role> roles) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.first_Name = first_Name;
         this.last_Name = last_Name;
-        this.mobileNumber = mobileNumber;
+        this.mobile_Number = mobile_Number;
         this.roles = roles;
     }
 
@@ -72,11 +85,11 @@ public class User {
     }
 
     public String getMobileNumber() {
-        return mobileNumber;
+        return mobile_Number;
     }
 
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
+    public void setMobileNumber(String mobile_Number) {
+        this.mobile_Number = mobile_Number;
     }
 
     public Set<Role> getRoles() {
@@ -95,7 +108,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", first_Name='" + first_Name + '\'' +
                 ", last_Name='" + last_Name + '\'' +
-                ", mobileNumber='" + mobileNumber + '\'' +
+                ", mobileNumber='" + mobile_Number + '\'' +
                 ", roles=" + roles +
                 '}';
     }
