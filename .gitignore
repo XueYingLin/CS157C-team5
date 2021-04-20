@@ -30,3 +30,6 @@ db/*
 
 #mac-os
 *.DS_Store
+
+#db properties
+application.properties
