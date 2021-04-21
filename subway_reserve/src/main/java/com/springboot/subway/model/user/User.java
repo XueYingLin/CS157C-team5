@@ -1,6 +1,6 @@
 package com.springboot.subway.model.user;
 
-import lombok.experimental.Accessors;
+import lombok.Builder;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -10,34 +10,11 @@ import javax.persistence.Id;
 import java.util.Objects;
 import java.util.Set;
 
-@Accessors(chain = true)
+@Builder(toBuilder = true)
 @Document(collection = "user")
 public class User {
-    @Id
-    private String id;
 
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
-    private String email;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String mobileNumber;
-
-    @DBRef
-    private Set<Role> roles;
-
-    public User() {
-    }
-
-    public User(String id, String email, String password, String firstName, String lastName, String mobileNumber, Set<Role> roles) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.mobileNumber = mobileNumber;
-        this.roles = roles;
-    }
+    /* Accessors And Mutator */
 
     public String getId() {
         return id;
@@ -87,11 +64,11 @@ public class User {
         this.mobileNumber = mobileNumber;
     }
 
-    public Set<Role> getRoles() {
+    public Set<role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<role> roles) {
         this.roles = roles;
     }
 
@@ -107,4 +84,20 @@ public class User {
     public int hashCode() {
         return Objects.hash(getId(), getEmail(), getPassword(), getFirstName(), getLastName(), getMobileNumber(), getRoles());
     }
+
+
+    /* private fields */
+    @Id
+    private String id;
+
+    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
+    private String email;
+
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String mobileNumber;
+
+    @DBRef
+    private Set<role> roles;
 }

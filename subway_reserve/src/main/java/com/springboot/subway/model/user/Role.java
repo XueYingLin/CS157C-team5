@@ -1,6 +1,6 @@
 package com.springboot.subway.model.user;
 
-import lombok.experimental.Accessors;
+import lombok.Builder;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,22 +8,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.Id;
 import java.util.Objects;
 
-@Accessors(chain = true)
+@Builder(toBuilder = true)
 @Document(collection = "role")
-public class Role {
-    @Id
-    private String id;
+public class role {
 
-    public Role() {
-    }
-
-    public Role(String id, String role) {
-        this.id = id;
-        this.role = role;
-    }
-
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
-    private String role;
+    /* Accessors And Mutator */
 
     public String getId() {
         return id;
@@ -37,11 +26,16 @@ public class Role {
         return role;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Role)) return false;
-        Role role1 = (Role) o;
+        if (!(o instanceof com.springboot.subway.model.user.role)) return false;
+        com.springboot.subway.model.user.role role1 = (com.springboot.subway.model.user.role) o;
         return getId().equals(role1.getId()) && getRole().equals(role1.getRole());
     }
 
@@ -50,8 +44,12 @@ public class Role {
         return Objects.hash(getId(), getRole());
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+
+    /* private fields */
+    @Id
+    private String id;
+
+    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
+    private String role;
 }
 
