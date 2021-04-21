@@ -1,37 +1,19 @@
 package com.springboot.subway.model.subway;
 
-import lombok.experimental.Accessors;
+import java.util.Objects;
+import lombok.Builder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Objects;
 
-@Accessors(chain = true)
-@Document(collection = "subway")
-public class Subway {
-    @Id
-    private String id;
+@Builder(toBuilder = true)
+@Document(collection = "Train")
+public class Train {
 
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
-    private String code;
-
-    private int capacity;
-
-    private String make;
-
-    @DBRef(lazy = true)
-    private Agency agency;
-
-    public Subway() {
-    }
-
-    public Subway(String id) {
-        this.id = id;
-    }
-
+    /* Accessors And Mutator */
     public String getId() {
         return id;
     }
@@ -75,13 +57,33 @@ public class Subway {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Subway)) return false;
-        Subway subway = (Subway) o;
-        return getCapacity() == subway.getCapacity() && getId().equals(subway.getId()) && Objects.equals(getCode(), subway.getCode()) && Objects.equals(getMake(), subway.getMake()) && Objects.equals(getAgency(), subway.getAgency());
+        if (!(o instanceof Train)) return false;
+        Train train = (Train) o;
+        return getCapacity() == train.getCapacity() &&
+                getId().equals(train.getId()) &&
+                getCode().equals(train.getCode()) &&
+                getMake().equals(train.getMake()) &&
+                getAgency().equals(train.getAgency());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getCode(), getCapacity(), getMake(), getAgency());
     }
+
+
+    /* private fields */
+    @Id
+    private String id;
+
+    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
+    private String code;
+
+    private int capacity;
+
+    private String make;
+
+    @DBRef(lazy = true)
+    private Agency agency;
+
 }
