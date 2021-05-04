@@ -1,6 +1,7 @@
 package com.springboot.subway.model.subway;
 
 import com.springboot.subway.model.user.User;
+import java.util.List;
 import lombok.Builder;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -9,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
 import java.util.Objects;
-import java.util.Set;
 
 @Builder(toBuilder = true)
 @Document(collection = "agency")
@@ -57,25 +57,26 @@ public class Agency {
         this.user = user;
     }
 
-    public Set<Train> getTrains() {
+    public List<Train> getTrains() {
         return trains;
     }
 
-    public void setTrains(Set<Train> trains) {
+    public void setTrains(List<Train> trains) {
         this.trains = trains;
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof com.springboot.subway.model.subway.Agency)) return false;
-        com.springboot.subway.model.subway.Agency agency = (com.springboot.subway.model.subway.Agency) o;
-        return getId().equals(agency.getId()) &&
-                getCode().equals(agency.getCode()) &&
-                getName().equals(agency.getName()) &&
-                getDetails().equals(agency.getDetails()) &&
-                getUser().equals(agency.getUser()) &&
-                getTrains().equals(agency.getTrains());
+        if (!(o instanceof Agency)) return false;
+        Agency agency = (Agency) o;
+        return Objects.equals(getId(), agency.getId()) &&
+                Objects.equals(getCode(), agency.getCode()) &&
+                Objects.equals(getName(), agency.getName()) &&
+                Objects.equals(getDetails(), agency.getDetails()) &&
+                Objects.equals(getUser(), agency.getUser()) &&
+                Objects.equals(getTrains(), agency.getTrains());
     }
 
     @Override
@@ -99,5 +100,5 @@ public class Agency {
     private User user;
 
     @DBRef(lazy = true)
-    private Set<Train> trains;
+    private List<Train> trains;
 }

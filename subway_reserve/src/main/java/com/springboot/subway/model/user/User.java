@@ -1,5 +1,6 @@
 package com.springboot.subway.model.user;
 
+import java.util.List;
 import lombok.Builder;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -8,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
 import java.util.Objects;
-import java.util.Set;
 
 @Builder(toBuilder = true)
 @Document(collection = "user")
@@ -56,35 +56,41 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getMobileNumber() {
-        return mobileNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public Set<role> getRoles() {
+    public List<role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<role> roles) {
+    public void setRoles(List<role> roles) {
         this.roles = roles;
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return getId().equals(user.getId()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getMobileNumber(), user.getMobileNumber()) && Objects.equals(getRoles(), user.getRoles());
+        return Objects.equals(getId(), user.getId()) &&
+                Objects.equals(getEmail(), user.getEmail()) &&
+                Objects.equals(getPassword(), user.getPassword()) &&
+                Objects.equals(getFirstName(), user.getFirstName()) &&
+                Objects.equals(getLastName(), user.getLastName()) &&
+                Objects.equals(getPhoneNumber(), user.getPhoneNumber()) &&
+                Objects.equals(getRoles(), user.getRoles());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getEmail(), getPassword(), getFirstName(), getLastName(), getMobileNumber(), getRoles());
+        return Objects.hash(getId(), getEmail(), getPassword(), getFirstName(), getLastName(), getPhoneNumber(), getRoles());
     }
-
 
     /* private fields */
     @Id
@@ -96,8 +102,8 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private String mobileNumber;
+    private String phoneNumber;
 
     @DBRef
-    private Set<role> roles;
+    private List<role> roles;
 }
