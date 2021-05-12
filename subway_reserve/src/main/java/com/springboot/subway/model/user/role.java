@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.Id;
 import java.util.Objects;
 
-@Builder(toBuilder = true)
+//@Builder(toBuilder = true)
 @Document(collection = "role")
 public class role {
 

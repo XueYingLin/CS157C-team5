@@ -2,6 +2,9 @@ package com.springboot.subway.model.user;
 
 import java.util.List;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -10,7 +13,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.Id;
 import java.util.Objects;
 
-@Builder(toBuilder = true)
+//@Builder(toBuilder = true)
+//@Data
+//@NoArgsConstructor
+//@Accessors(chain = true)
 @Document(collection = "user")
 public class User {
 
