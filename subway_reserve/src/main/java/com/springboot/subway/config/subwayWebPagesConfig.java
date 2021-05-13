@@ -12,5 +12,8 @@ public class subwayWebPagesConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("login");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/signup").setViewName("signup");
+        registry.addViewController("/logout").setViewName("logout");
+        registry.addViewController("/dashboard").setViewName("dashboard");
+        registry.addViewController("/logout").setViewName("logout");
     }
 }

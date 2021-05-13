@@ -2,7 +2,6 @@ package com.springboot.subway.model.subway;
 
 import com.springboot.subway.model.user.User;
 import java.util.List;
-import lombok.Builder;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -11,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.Id;
 import java.util.Objects;
 
-@Builder(toBuilder = true)
+//@Builder(toBuilder = true)
 @Document(collection = "agency")
 public class Agency {
 

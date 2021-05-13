@@ -37,130 +37,134 @@ public class SubwayReservationSystemApplication {
 
             /* init our roles */
 
-            role adminRole = (!Optional.ofNullable(roleRepository.findByRole("ADMIN")).isPresent())
-                    ?
-                   roleRepository.save(role.builder().role("ADMIN").build())
-                    :
-                    roleRepository.findByRole("ADMIN");
+            role adminRole = new role();
+            adminRole.setRole("ADMIN");
+
+
+            adminRole = (!Optional.ofNullable(roleRepository.findByRole("ADMIN")).isPresent()) ? roleRepository.save(adminRole) :  roleRepository.findByRole("ADMIN");
 
 
 
-            role traveller = (! Optional.ofNullable(roleRepository.findByRole("TRAVELLER")).isPresent()) ?
-                    roleRepository.save(role.builder().role("TRAVELLER").build()) : roleRepository.findByRole("TRAVELLER");
+            role traveller = new role();
+            traveller.setRole("TRAVELLER");
+
+
+            traveller = (! Optional.ofNullable(roleRepository.findByRole("TRAVELLER")).isPresent()) ? roleRepository.save(traveller) : roleRepository.findByRole("ADMIN");
+
+
 
 
 
             /* Create my five railway stations */
 
-            station sf = (!Optional.ofNullable(stationRepository.findByCode("SF")).isPresent()) ?
-                    stationRepository.save(
-                            station.builder()
-                                    .name("San Francisco")
-                                    .detail("near SF airport")
-                                    .code("SF")
-                                    .build()
-                    ) :stationRepository.findByCode("SF");
+            station sf = new station();
+            sf.setName("San Francisco");
+            sf.setDetail("near SF airport");
+            sf.setCode("SF");
+
+            sf = (!Optional.ofNullable(stationRepository.findByCode("SF")).isPresent()) ? stationRepository.save(sf) : stationRepository.findByCode("SF");
 
 
 
-            station sm = (!Optional.ofNullable(stationRepository.findByCode("SM")).isPresent()) ?
-                    stationRepository.save(
-                            station.builder()
-                                    .name("San Mateo")
-                                    .detail("near San Mateo")
-                                    .code("SM")
-                                    .build()
-                    ) :stationRepository.findByCode("SM");
+            station sm = new station();
+            sm.setName("San Mateo");
+            sm.setDetail("near San Mateo");
+            sm.setCode("SM");
+
+            sm = (!Optional.ofNullable(stationRepository.findByCode("SM")).isPresent()) ? stationRepository.save(sm) : stationRepository.findByCode("SM");
 
 
-            station rw = (!Optional.ofNullable(stationRepository.findByCode("RW")).isPresent()) ?
-                    stationRepository.save(
-                            station.builder()
-                                    .name("Red Wood")
-                                    .detail("near Facebook")
-                                    .code("RW")
-                                    .build()
-                    ) : stationRepository.findByCode("RW");
+
+            station rw = new station();
+            rw.setName("Red Wood");
+            rw.setDetail("near Facebook");
+            rw.setCode("RW");
+
+            rw = (!Optional.ofNullable(stationRepository.findByCode("RW")).isPresent()) ? stationRepository.save(rw) : stationRepository.findByCode("RW");
 
 
-            station pa = (!Optional.ofNullable(stationRepository.findByCode("PA")).isPresent()) ?
-                    stationRepository.save(
-                            station.builder()
-                                    .name("Palo Alto")
-                                    .detail("near iKEA")
-                                    .code("PA")
-                                    .build()
-                    ) : stationRepository.findByCode("PA");
+            station pa = new station();
+            pa.setName("Palo Alto");
+            pa.setDetail("near iKEA");
+            pa.setCode("PA");
+
+            pa = (!Optional.ofNullable(stationRepository.findByCode("PA")).isPresent()) ? stationRepository.save(pa) : stationRepository.findByCode("PA");
 
 
-            station sj = (!Optional.ofNullable(stationRepository.findByCode("SJ")).isPresent()) ?
-                    stationRepository.save(
-                            station.builder()
-                                    .name("San Jose")
-                                    .detail("near Berryessa")
-                                    .code("SJ")
-                                    .build()
-                    ) : stationRepository.findByCode("SJ");
+
+            station sj = new station();
+            sj.setName("San Jose");
+            sj.setDetail("near San Mateo");
+            sj.setCode("SJ");
+
+            sj = (!Optional.ofNullable(stationRepository.findByCode("SJ")).isPresent()) ? stationRepository.save(sj) : stationRepository.findByCode("SJ");
+
+
+
 
 
 
             /* create admin user */
 
-            User admin = (!Optional.ofNullable(userRepository.findByEmail("admin.user@gmail.com")).isPresent()) ?
-                    userRepository.save(
-                            User.builder()
-                                    .email("admin.user@gmail.com")
-                                    .firstName("Tim")
-                                    .lastName("cook")
-                                    .phoneNumber("4082222222")
-                                    .password("123456")
-                                    .roles(new ArrayList<>(Arrays.asList(adminRole)))
-                                    .build()
-                    ) : userRepository.findByEmail("admin.user@gmail.com");
+            User admin = new User();
+            admin.setEmail("admin.user@gmail.com");
+            admin.setFirstName("Tim");
+            admin.setLastName("cook");
+            admin.setPassword("123456");
+            admin.setPhoneNumber("4082222222");
+            admin.setRoles(new ArrayList<>(Arrays.asList(adminRole)));
+
+            admin = (!Optional.ofNullable(userRepository.findByEmail("admin.user@gmail.com")).isPresent()) ? userRepository.save(admin) : userRepository.findByEmail("admin.user@gmail.com");
+
+
 
 
             /* init a agency */
-            Agency tom = (!Optional.ofNullable(agencyRepository.findByCode("AGENCY-TOM")).isPresent()) ?
-                    agencyRepository.save(
-                            Agency.builder()
-                            .code("AGENCY-TOM")
-                            .name("Tom Agency")
-                            .details("near the moon")
-                            .user(admin)
-                            .build()
-                    ) : agencyRepository.findByCode("AGENCY-TOM");
+            Agency tom = new Agency();
+            tom.setCode("AGENCY-TOM");
+            tom.setName("Tom Agency");
+            tom.setDetails("near the moon");
+            tom.setUser(admin);
+
+            tom = (!Optional.ofNullable(agencyRepository.findByCode("AGENCY-TOM")).isPresent()) ? agencyRepository.save(tom) : agencyRepository.findByCode("AGENCY-TOM");
+
+
+
 
             /* init a train */
-            Train solarEnergy = (!Optional.ofNullable(trainRepository.findByCode("AGENCY-TIM")).isPresent()) ?
-                    trainRepository.save(
-                            Train.builder()
-                            .code("AGENCY-TIM")
-                            .agency(tom)
-                            .capacity(100)
-                            .build()
-                    ) : trainRepository.findByCode("AGENCY-TIM");
+            Train solarEnergy = new Train();
+            solarEnergy.setCode("AGENCY-TIM");
+            solarEnergy.setAgency(tom);
+            solarEnergy.setCapacity(100);
+
+            solarEnergy = (!Optional.ofNullable(trainRepository.findByCode("AGENCY-TIM")).isPresent()) ? trainRepository.findByCode("AGENCY-TIM") : trainRepository.findByCode("AGENCY-TIM");
+
 
 
             /* Adding my train into an agency */
+
             if (tom.getTrains() == null) {
                 tom.setTrains(new ArrayList<>());
                 tom.getTrains().add(solarEnergy);
             }
 
 
+
+
             /* init a trip (for a ticket) */
-            Trip trip = (!Optional.ofNullable(tripRepository.findByBeginStopAndEndStopAndTrain(sf, sj, solarEnergy)).isPresent()) ?
-                    tripRepository.save(
-                            Trip.builder()
-                            .beginStop(sf)
-                            .endStop(sj)
-                            .agency(tom)
-                            .fare(30)
-                            .train(solarEnergy)
-                            .journeyTime(30)
-                            .build()
-                    )
-                    : tripRepository.findByBeginStopAndEndStopAndTrain(sf, sj, solarEnergy);
+            Trip trip = new Trip();
+            trip.setBeginStation(sf);
+            trip.setEndStation(sj);
+            trip.setAgency(tom);
+            trip.setFare(30);
+            trip.setTrain(solarEnergy);
+            trip.setJourneyTime(30);
+
+            trip = (!Optional.ofNullable(tripRepository.findByBeginStationAndEndStationAndTrain(sf, sj, solarEnergy)).isPresent()) ?
+                    tripRepository.save(trip) : tripRepository.findByBeginStationAndEndStationAndTrain(sf, sj, solarEnergy);
+
         };
     }
+
+
 }

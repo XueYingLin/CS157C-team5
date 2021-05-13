@@ -13,7 +13,7 @@
 	<version>1.0</version>
 	<name>springboot-subway</name>
 	<packaging>jar</packaging>
-	<description>Demo project for Spring Boot with MongoDB</description>
+	<description>My Subway Book System for Spring Boot with MongoDB</description>
 
 	<properties>
 		<java.version>1.8</java.version>
