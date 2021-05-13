@@ -6,7 +6,7 @@ import lombok.Builder;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Builder(toBuilder = true)
+//@Builder(toBuilder = true)
 @Document(collection = "trip")
 public class Trip {
 
@@ -36,20 +36,20 @@ public class Trip {
         this.journeyTime = journeyTime;
     }
 
-    public station getBeginStop() {
-        return beginStop;
+    public station getBeginStation() {
+        return beginStation;
     }
 
-    public void setBeginStop(station beginStop) {
-        this.beginStop = beginStop;
+    public void setBeginStation(station beginStation) {
+        this.beginStation = beginStation;
     }
 
-    public station getEndStop() {
-        return endStop;
+    public station getEndStation() {
+        return endStation;
     }
 
-    public void setEndStop(station endStop) {
-        this.endStop = endStop;
+    public void setEndStation(station endStation) {
+        this.endStation = endStation;
     }
 
     public Train getTrain() {
@@ -76,16 +76,16 @@ public class Trip {
         Trip trip = (Trip) o;
         return getFare() == trip.getFare() &&
                 getJourneyTime() == trip.getJourneyTime() &&
-                getId().equals(trip.getId()) &&
-                getBeginStop().equals(trip.getBeginStop()) &&
-                getEndStop().equals(trip.getEndStop()) &&
-                getTrain().equals(trip.getTrain()) &&
-                getAgency().equals(trip.getAgency());
+                Objects.equals(getId(), trip.getId()) &&
+                Objects.equals(getBeginStation(), trip.getBeginStation()) &&
+                Objects.equals(getEndStation(), trip.getEndStation()) &&
+                Objects.equals(getTrain(), trip.getTrain()) &&
+                Objects.equals(getAgency(), trip.getAgency());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFare(), getJourneyTime(), getBeginStop(), getEndStop(), getTrain(), getAgency());
+        return Objects.hash(getId(), getFare(), getJourneyTime(), getBeginStation(), getEndStation(), getTrain(), getAgency());
     }
 
 
@@ -98,10 +98,10 @@ public class Trip {
     private int journeyTime;
 
     @DBRef
-    private station beginStop;
+    private station beginStation;
 
     @DBRef
-    private station endStop;
+    private station endStation;
 
     @DBRef
     private Train train;

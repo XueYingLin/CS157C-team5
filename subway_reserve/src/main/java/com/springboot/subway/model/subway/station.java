@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Builder(toBuilder = true)
+//@Builder(toBuilder = true)
 @Document(collection = "station")
 public class station {
 
