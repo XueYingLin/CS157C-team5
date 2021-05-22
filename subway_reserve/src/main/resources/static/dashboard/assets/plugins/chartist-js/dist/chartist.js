@@ -2523,8 +2523,8 @@ var Chartist = {
       chunks.pop();
     }
 
-    // Using svgPathElementDescriptions to map raw path arrays into objects that contain the command and the parameters
-    // For example {command: 'M', x: '10', y: '10'}
+    // Using svgPathElementDescriptions to map raw path arrays into objects that contain the frontEndFormat and the parameters
+    // For example {frontEndFormat: 'M', x: '10', y: '10'}
     var elements = chunks.map(function(chunk) {
         var command = chunk.shift(),
           description = elementDescriptions[command.toLowerCase()];
@@ -2637,10 +2637,10 @@ var Chartist = {
   }
 
   /**
-   * Split a Svg.Path object by a specific command in the path chain. The path chain will be split and an array of newly created paths objects will be returned. This is useful if you'd like to split an SVG path by it's move commands, for example, in order to isolate chunks of drawings.
+   * Split a Svg.Path object by a specific frontEndFormat in the path chain. The path chain will be split and an array of newly created paths objects will be returned. This is useful if you'd like to split an SVG path by it's move commands, for example, in order to isolate chunks of drawings.
    *
    * @memberof Chartist.Svg.Path
-   * @param {String} command The command you'd like to use to split the path
+   * @param {String} command The frontEndFormat you'd like to use to split the path
    * @return {Array<Chartist.Svg.Path>}
    */
   function splitByCommand(command) {
@@ -3229,7 +3229,7 @@ var Chartist = {
           var firstElement = solidPathSegments.pathElements[0];
           var lastElement = solidPathSegments.pathElements[solidPathSegments.pathElements.length - 1];
 
-          // Cloning the solid path segment with closing option and removing the first move command from the clone
+          // Cloning the solid path segment with closing option and removing the first move frontEndFormat from the clone
           // We then insert a new move that should start at the area base and draw a straight line up or down
           // at the end of the path we add an additional straight line to the projected area base value
           // As the closing option is set our path will be automatically closed

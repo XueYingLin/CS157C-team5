@@ -253,7 +253,7 @@ body {
   margin-bottom: 150px; }
 
 .signup-content {
-  padding: 75px 0; }
+  padding: 100px 0; }
 
 .signup-form, .signup-image, .signin-form, .signin-image {
   width: 50%;
@@ -292,10 +292,9 @@ figure {
   margin-top: 25px;
   cursor: pointer;
 }
-
-.form-submit:hover {
-  background: #dc3545;
-}
+  .form-submit:hover {
+    background: #dc3545;
+  }
 
 #signin {
   margin-top: 16px; }
@@ -459,8 +458,13 @@ label.valid {
   font-size: 18px; }
 
 .signin-content {
-  padding-top: 67px;
-  padding-bottom: 87px; }
+
+  /*padding-top: 67px;*/
+  /*padding-bottom: 87px;*/
+
+  padding-top: 200px;
+  padding-bottom: 223px;
+}
 
 .social-login {
   align-items: center;

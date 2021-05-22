@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Subway System Login</title>
+    <title>Login</title>
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -16,6 +16,7 @@
     <!-- Main css -->
     <link rel="stylesheet" href="/auth/css/style.css">
 
+
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
 
 
@@ -23,10 +24,12 @@
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- import font-awesome   -->
-    <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"/>
 
     <!-- import google font  -->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -37,10 +40,13 @@
             <div class="signin-content">
                 <div class="signin-image">
                     <figure><img src="/auth/images/login.png" alt="sing up image"></figure>
-                    <a href="/signup" class="signup-image-link" style="font-family: 'Roboto', sans-serif; color:blue">Create your account</a>
+                    <!--                    <a href="/signup" class="signup-image-link">Create an account</a>-->
+                    <a href="/signup" class="signup-image-link" style="font-family: 'Roboto', sans-serif; color:blue">Create
+                        your account</a>
                 </div>
 
                 <div class="signin-form">
+                    <!--                    <h2 class="form-title">Login</h2>-->
                     <h2 class="form-title" style="font-family: 'Roboto', sans-serif; color:blue">Login</h2>
                     <form method="POST" class="register-form" id="login-form" th:action="@{/login}">
                         <div class="form-group">
@@ -52,26 +58,30 @@
                             <input type="password" name="password" id="password" placeholder="Password"/>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                            <label for="remember-me" class="label-agree-term" style="font-family: 'Roboto', sans-serif; color:blue">
-                                <span><span></span></span>
-                                Remember me</label>
+                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term"/>
+                            <label for="remember-me" class="label-agree-term"
+                                   style="font-family: 'Roboto', sans-serif; color:blue">
+                                Remember me
+                            </label>
                         </div>
-                        <div class="form-group form-button" href="/dashboard.html">
+                        <div class="form-group form-button">
                             <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                         </div>
                     </form>
-<!--                    <div id="errors" class="text-danger" th:if="${(param.error != null) and (param.error[0] == 'true')}">-->
-<!--                        Invalid email or password-->
-<!--                    </div>-->
+
+
                     <div class="social-login">
 
 
                         <div class="container">
-                            <a href="https://www.facebook.com/" class="btn btn-primary">Facebook <span class="fa fa-facebook"></span> </a>
-                            <a href="https://www.google.com/" class="btn btn-danger"> Google <span class="fa fa-google-plus"></span> </a>
-                            <a href="https://twitter.com/" class="btn btn-primary">Twitter <span class="fa fa-twitter"></span> </a>
-                            <a href="https://github.com/" class="btn btn-primary">Github <span class="fa fa-github"></span> </a>
+                            <a href="https://www.facebook.com/" class="btn btn-primary">Facebook <span
+                                    class="fa fa-facebook"></span> </a>
+                            <a href="https://www.google.com/" class="btn btn-danger"> Google <span
+                                    class="fa fa-google-plus"></span> </a>
+                            <a href="https://twitter.com/" class="btn btn-primary">Twitter <span
+                                    class="fa fa-twitter"></span> </a>
+                            <a href="https://github.com/" class="btn btn-primary">Github <span
+                                    class="fa fa-github"></span> </a>
                         </div>
                     </div>
                 </div>
@@ -81,6 +91,6 @@
 </div>
 
 <!-- JS -->
-<!--<script src="/auth/vendor/jquery/jquery.min.js"></script>-->
+<script src="/auth/vendor/jquery/jquery.min.js"></script>
 </body>
 </html>

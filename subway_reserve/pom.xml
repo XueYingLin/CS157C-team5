@@ -8,12 +8,12 @@
 		<version>2.3.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.springboot.subway</groupId>
+	<groupId>com.subway.springboot</groupId>
 	<artifactId>springboot-subway</artifactId>
 	<version>1.0</version>
 	<name>springboot-subway</name>
 	<packaging>jar</packaging>
-	<description>My Subway Book System for Spring Boot with MongoDB</description>
+	<description>My Springboot for subway book system</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -103,6 +103,9 @@
 			<artifactId>validation-api</artifactId>
 		</dependency>
 
+
+
+		<!--JS UI library-->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
@@ -123,6 +126,8 @@
 			<artifactId>font-awesome</artifactId>
 			<version>4.7.0</version>
 		</dependency>
+
+
 
 	</dependencies>
 

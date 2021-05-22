@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/layout">
+
+<head>
+</head>
+
+<body>
+
+
+<div class="container-fluid" layout:fragment="content">
+
+
+    <div class="row page-titles">
+        <div class="col-md-5 col-8 align-self-center">
+            <h3 class="text-themecolor m-b-0 m-t-0">Train Details</h3>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="home">Home</a></li>
+                <li class="breadcrumb-item active">Trains</li>
+            </ol>
+        </div>
+    </div>
+
+
+    <!-- Row -->
+    <div class="row">
+        <!-- column -->
+        <div class="col-lg-8 col-md-7">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">Trains</h4>
+                    <h6 class="card-subtitle">Agency owned Trains</h6>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Train Name</th>
+                                <th>Capacity</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:each="train,iterationStatus : ${agency.trains}">
+                                <tr>
+                                    <td th:text=${iterationStatus.count}></td>
+                                    <td th:text=${train.code}></td>
+                                    <td th:text=${train.capacity}></td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-5">
+            <div class="card">
+                <div class="card-block">
+                    <h3 class="card-title">Add New Train</h3>
+                    <h6 class="card-subtitle">Input the details</h6>
+                    <form method="POST" class="form-horizontal form-material" th:action="@{/train}"
+                          th:object="${trainFormData}">
+                        <div class="form-group">
+                            <label for="code" class="col-md-12">Train Name</label>
+                            <div class="col-md-12">
+                                <input type="text" th:field="*{code}" class="form-control form-control-line" name="code"
+                                       id="code">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="capacity" class="col-md-12">Capacity</label>
+                            <div class="col-md-12">
+                                <input type="text" th:field="*{capacity}" class="form-control form-control-line"
+                                       name="capacity" id="capacity">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="make" class="col-md-12">Model</label>
+                            <div class="col-md-12">
+                                <input type="text" th:field="*{make}" class="form-control form-control-line" name="make"
+                                       id="make">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button class="btn btn-success">Add Train</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
